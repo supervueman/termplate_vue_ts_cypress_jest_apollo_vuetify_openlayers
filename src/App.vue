@@ -35,6 +35,8 @@
         <span class="mr-2">Latest Release</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
+
+      <ThemeChangerMenu />
     </v-app-bar>
 
     <v-main>
@@ -44,13 +46,15 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Vue, Component } from 'vue-property-decorator'
+import ThemeChangerMenu from '@/components/ThemeChanger.vue'
 
-export default Vue.extend({
-  name: 'App',
-
-  data: () => ({
-    //
-  }),
+@Component({
+  components: {
+    ThemeChangerMenu,
+  },
 })
+export default class App extends Vue {
+
+}
 </script>
