@@ -1,9 +1,9 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
   },
-  'extends': [
+  extends: [
     'plugin:vue/essential',
     '@vue/standard',
     '@vue/typescript/recommended',
@@ -12,17 +12,16 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
-    'no-console': 'off',
     'no-debugger': 'off',
     'space-before-function-paren': 'off',
-    'no-console': ["error", { allow: ["warn", "error"] }],
-    'comma-dangle': ["error", "always-multiline"],
+    'no-console': ['error', { allow: ['warn', 'error'] }],
+    'comma-dangle': ['error', 'always-multiline'],
   },
   overrides: [
     {
       files: [
         '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/**/*.spec.{j,t}s?(x)'
+        '**/tests/unit/**/*.spec.{j,t}s?(x)',
       ],
       env: {
         jest: true,
