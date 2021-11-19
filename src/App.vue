@@ -43,7 +43,9 @@
 
     <v-main>
       <PreferencesDrawer />
-      <router-view/>
+      <component :is="$route.meta.layout || 'div'">
+        <router-view />
+      </component>
     </v-main>
   </v-app>
 </template>
