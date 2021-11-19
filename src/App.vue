@@ -1,76 +1,12 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-
-      <ThemeChangerMenu />
-
-      <v-btn @click="openThemeManager">Open theme manager</v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <PreferencesDrawer />
-      <component :is="$route.meta.layout || 'div'">
-        <router-view />
-      </component>
-    </v-main>
-  </v-app>
+  <component :is="$route.meta.layout || 'div'">
+    <router-view />
+  </component>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { Mutation } from 'vuex-class'
 
-import ThemeChangerMenu from '@/components/ThemeChanger.vue'
-import PreferencesDrawer from '@/components/ThemeManager.vue'
-
-const themeManagerNamspace = 'themeManager'
-
-@Component({
-  components: {
-    ThemeChangerMenu,
-    PreferencesDrawer,
-  },
-})
-export default class App extends Vue {
-  @Mutation('setPreferencesDrawer', { namespace: themeManagerNamspace })
-  private declare setPreferencesDrawer: (value: boolean) => void
-
-  private openThemeManager() {
-    this.setPreferencesDrawer(true)
-  }
-}
+@Component({})
+export default class App extends Vue {}
 </script>
