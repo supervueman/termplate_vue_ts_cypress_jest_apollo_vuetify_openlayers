@@ -37,9 +37,12 @@
       </v-btn>
 
       <ThemeChangerMenu />
+
+      <v-btn @click="openThemeManager">Open theme manager</v-btn>
     </v-app-bar>
 
     <v-main>
+      <PreferencesDrawer />
       <router-view/>
     </v-main>
   </v-app>
@@ -47,14 +50,25 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { Mutation } from 'vuex-class'
+
 import ThemeChangerMenu from '@/components/ThemeChanger.vue'
+import PreferencesDrawer from '@/components/ThemeManager.vue'
+
+const themeManagerNamspace = 'themeManager'
 
 @Component({
   components: {
     ThemeChangerMenu,
+    PreferencesDrawer,
   },
 })
 export default class App extends Vue {
+  @Mutation('setPreferencesDrawer', { namespace: themeManagerNamspace })
+  private declare setPreferencesDrawer: (value: boolean) => void
 
+  private openThemeManager() {
+    this.setPreferencesDrawer(true)
+  }
 }
 </script>
