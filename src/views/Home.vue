@@ -1,12 +1,18 @@
 <template>
   <div>
-    <h1>HOME PAGE</h1>
+    <Map />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 
-@Component({})
+import Map from '@/components/Map.vue'
+
+@Component({
+  components: {
+    Map,
+  },
+})
 export default class Home extends Vue {}
 </script>
