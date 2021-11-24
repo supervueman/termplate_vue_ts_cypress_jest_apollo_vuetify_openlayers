@@ -25,12 +25,10 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 import Map from '@/components/Map.vue'
-import DefectsTable from '@/components/DefectsTable.vue'
 
 @Component({
   components: {
     Map,
-    DefectsTable,
   },
 })
 export default class NavigationDrawer extends Vue {
