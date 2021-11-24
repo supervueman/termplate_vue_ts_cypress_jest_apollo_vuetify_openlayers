@@ -1,16 +1,18 @@
 <template>
-  <hello-world />
+  <div>
+    <Map />
+  </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import HelloWorld from '../components/HelloWorld.vue'
+import { Vue, Component } from 'vue-property-decorator'
 
-export default Vue.extend({
-  name: 'Home',
+import Map from '@/components/Map.vue'
 
+@Component({
   components: {
-    HelloWorld,
+    Map,
   },
 })
+export default class Home extends Vue {}
 </script>
