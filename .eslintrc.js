@@ -16,6 +16,7 @@ module.exports = {
     'space-before-function-paren': 'off',
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'comma-dangle': ['error', 'always-multiline'],
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
   overrides: [
     {
