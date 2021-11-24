@@ -1,19 +1,19 @@
 <template>
-  <v-navigation-drawer v-model="open" fixed right temporary>
-    <v-list-item>
-      <v-select v-model="theme" label="color theme" :items="themeOptions" />
-    </v-list-item>
-    <v-list-item>
-      <v-select v-model="contrast" label="contrast" :items="contrastOptions" />
-    </v-list-item>
-  </v-navigation-drawer>
+  <v-card fixed right temporary>
+    <v-card-title>Settings</v-card-title>
+    <v-card-text>
+      <v-select v-model="theme" label="color theme" :items="themeOptions" outlined dense />
+      <v-select v-model="contrast" label="contrast" :items="contrastOptions" outlined dense />
+      <v-switch v-model="$vuetify.theme.dark" />
+    </v-card-text>
+  </v-card>
 </template>
 
 <script lang="ts">
-import { Preferences } from '@/store/themeManager/types'
 import { Vue, Component } from 'vue-property-decorator'
 import { State, Action, Mutation } from 'vuex-class'
-import { VuetifyThemesT, VuetifyThemesNames } from '../plugins/vuetify'
+import { VuetifyThemesT, VuetifyThemesNames } from '@/plugins/vuetify'
+import { Preferences } from '@/store/themeManager/types'
 
 type ThemeOptions = {
   text: string
@@ -23,7 +23,7 @@ type ThemeOptions = {
 const namespace = 'themeManager'
 
 @Component({})
-export default class PreferencesDrawer extends Vue {
+export default class Settings extends Vue {
   private themeOptions: ThemeOptions[] = [
     {
       text: 'blue',

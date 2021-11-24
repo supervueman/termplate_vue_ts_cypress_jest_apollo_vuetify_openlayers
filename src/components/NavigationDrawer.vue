@@ -6,10 +6,9 @@
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain
-          src="/logo.png"
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
           transition="scale-transition"
-          width="80"
-          :mobile-breakpoint="720"
+          width="40"
         />
       </div>
     </v-toolbar>
