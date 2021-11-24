@@ -24,7 +24,7 @@ import NavigationDrawer from '@/components/NavigationDrawer.vue'
 import BottomBar from '@/components/BottomBar.vue'
 import AppBar from '@/components/AppBar.vue'
 
-const themeManagerNamspace = 'themeManager'
+const themeManagerNamespace = 'themeManager'
 
 @Component({
   components: {
@@ -35,10 +35,10 @@ const themeManagerNamspace = 'themeManager'
   },
 })
 export default class App extends Vue {
-  @State('preferencesDrawer', { namespace: themeManagerNamspace })
+  @State('preferencesDrawer', { namespace: themeManagerNamespace })
   private readonly declare preferencesDrawer: boolean
 
-  @Mutation('setPreferencesDrawer', { namespace: themeManagerNamspace })
+  @Mutation('setPreferencesDrawer', { namespace: themeManagerNamespace })
   private declare setPreferencesDrawer: (value: boolean) => void
 
   get open(): boolean {
