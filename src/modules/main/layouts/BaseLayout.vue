@@ -19,10 +19,10 @@
 import { Vue, Component } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class'
 
-import Settings from '@/components/Settings.vue'
-import NavigationDrawer from '@/components/NavigationDrawer.vue'
-import BottomBar from '@/components/BottomBar.vue'
-import AppBar from '@/components/AppBar.vue'
+import Settings from '../components/Settings.vue'
+import NavigationDrawer from '../components/NavigationDrawer.vue'
+import BottomBar from '../components/BottomBar.vue'
+import AppBar from '../components/AppBar.vue'
 
 const themeManagerNamespace = 'themeManager'
 
@@ -40,13 +40,5 @@ export default class App extends Vue {
 
   @Mutation('setPreferencesDrawer', { namespace: themeManagerNamespace })
   private declare setPreferencesDrawer: (value: boolean) => void
-
-  get open(): boolean {
-    return this.preferencesDrawer
-  }
-
-  set open(value: boolean) {
-    this.setPreferencesDrawer(value)
-  }
 }
 </script>

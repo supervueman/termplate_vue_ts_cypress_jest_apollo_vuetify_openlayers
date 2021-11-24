@@ -13,7 +13,7 @@
 import { Vue, Component } from 'vue-property-decorator'
 import { State, Action, Mutation } from 'vuex-class'
 import { VuetifyThemesT, VuetifyThemesNames } from '@/plugins/vuetify'
-import { Preferences } from '@/store/themeManager/types'
+import { Preferences } from '../store/types'
 
 type ThemeOptions = {
   text: string

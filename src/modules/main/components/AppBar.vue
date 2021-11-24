@@ -1,11 +1,15 @@
 <template>
-  <v-footer color="primary" app>
-  </v-footer>
+  <v-app-bar
+    app
+    flat
+    color="primary"
+    dark
+  ></v-app-bar>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component({})
-export default class BottomBar extends Vue {}
+export default class AppBar extends Vue {}
 </script>

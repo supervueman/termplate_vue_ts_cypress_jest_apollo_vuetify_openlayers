@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { themeManager } from './themeManager'
+import { store as themeManager } from '@/modules/main'
+
 import { RootState } from './types'
 
 Vue.use(Vuex)

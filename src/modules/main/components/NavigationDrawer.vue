@@ -24,20 +24,6 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 
-import Map from '@/components/Map.vue'
-
-@Component({
-  components: {
-    Map,
-  },
-})
-export default class NavigationDrawer extends Vue {
-  get isPanelOpen(): boolean {
-    return this.$store.state.isPanelOpen
-  }
-
-  set isPanelOpen(value: boolean) {
-    this.$store.commit('setPanelOpen', value)
-  }
-}
+@Component({})
+export default class NavigationDrawer extends Vue {}
 </script>
