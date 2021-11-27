@@ -1,6 +1,5 @@
 <template>
   <div>
-    <v-card-title>Settings</v-card-title>
     <v-card-text>
       <v-select v-model="theme" label="color theme" :items="themeOptions" outlined dense />
       <v-select v-model="contrast" label="contrast" :items="contrastOptions" outlined dense />
