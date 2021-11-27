@@ -7,7 +7,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 
-import Map from '@/components/Map.vue'
+import Map from '@/modules/map/components/Map.vue'
 
 @Component({
   components: {
