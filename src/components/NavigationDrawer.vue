@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="isPanelOpen" app fixed>
+  <v-navigation-drawer app fixed>
     <v-toolbar color="primary" flat>
       <div class="d-flex align-center">
         <v-img

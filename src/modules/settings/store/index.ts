@@ -6,7 +6,7 @@ import { SettingsState } from './types'
 import { RootState } from '@/store/types'
 
 export const state: SettingsState = {
-  isOpen: false,
+  isOpenSettingsWindow: false,
 }
 
 const namespaced = true
