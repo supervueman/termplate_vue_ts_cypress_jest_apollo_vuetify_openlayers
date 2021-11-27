@@ -13,6 +13,7 @@ export const mutations: MutationTree<ThemeManagerState> = {
   },
 
   setContrast(state, contrast: VuetifyThemesT) {
+    localStorage.setItem('theme', contrast)
     state.preferences.contrast = contrast
     vuetify.framework.theme.dark = contrast === VuetifyThemesNames.Dark
   },

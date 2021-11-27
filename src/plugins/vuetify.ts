@@ -13,8 +13,16 @@ Vue.use(Vuetify)
 
 export default new Vuetify({
   theme: {
+    dark: localStorage.getItem('theme') === VuetifyThemesNames.Dark,
     options: {
       customProperties: true,
+      minifyTheme: (css) => {
+        return process.env.NODE_ENV === 'production' ? css.replace(/[\r\n|\r|\n]/g, '') : css
+      },
+      themeCache: {
+        get: () => localStorage.getItem('theme-styles'),
+        set: (_, value) => localStorage.setItem('theme-styles', value),
+      },
     },
     themes: {
       light: {
