@@ -1,9 +1,5 @@
 import { ActionTree } from 'vuex'
-import { ThemeManagerState } from './types'
+import { MainState } from './types'
 import { RootState } from '@/store/types'
 
-export const actions: ActionTree<ThemeManagerState, RootState> = {
-  changePreferencesDrawer({ commit }, preferencesDrawer: boolean) {
-    commit('setPreferencesDrawer', preferencesDrawer)
-  },
-}
+export const actions: ActionTree<MainState, RootState> = {}

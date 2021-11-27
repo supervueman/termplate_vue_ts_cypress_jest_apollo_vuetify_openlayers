@@ -1,9 +1,5 @@
 import { GetterTree } from 'vuex'
-import { ThemeManagerState } from './types'
+import { MainState } from './types'
 import { RootState } from '@/store/types'
 
-export const getters: GetterTree<ThemeManagerState, RootState> = {
-  preferencesDrawer(state): boolean {
-    return state.preferencesDrawer
-  },
-}
+export const getters: GetterTree<MainState, RootState> = {}

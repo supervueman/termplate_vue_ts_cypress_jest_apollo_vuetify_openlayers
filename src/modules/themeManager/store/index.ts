@@ -2,16 +2,20 @@ import { Module } from 'vuex'
 import { getters } from './getters'
 import { actions } from './actions'
 import { mutations } from './mutations'
-import { MainState } from './types'
+import { ThemeManagerState } from './types'
 import { RootState } from '@/store/types'
 
-export const state: MainState = {
-  isOpen: false,
+export const state: ThemeManagerState = {
+  preferencesDrawer: false,
+  preferences: {
+    contrast: 'light',
+    theme: 'blue',
+  },
 }
 
 const namespaced = true
 
-const store: Module<MainState, RootState> = {
+const themeManager: Module<ThemeManagerState, RootState> = {
   namespaced,
   state,
   getters,
@@ -19,4 +23,4 @@ const store: Module<MainState, RootState> = {
   mutations,
 }
 
-export default store
+export default themeManager

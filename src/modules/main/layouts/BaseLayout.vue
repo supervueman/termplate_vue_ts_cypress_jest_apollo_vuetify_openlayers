@@ -19,7 +19,7 @@
 import { Vue, Component } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class'
 
-import Settings from '../components/Settings.vue'
+import Settings from '../../settings/components/Settings.vue'
 import NavigationDrawer from '../components/NavigationDrawer.vue'
 import BottomBar from '../components/BottomBar.vue'
 import AppBar from '../components/AppBar.vue'
