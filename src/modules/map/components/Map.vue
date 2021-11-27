@@ -1,34 +1,46 @@
 <template>
-  <vl-map
-    :load-tiles-while-animating="true"
-    :load-tiles-while-interacting="true"
-    data-projection="EPSG:4326"
-    style="height: calc(100vh - 100px)"
-    @pointermove="onMouseMove"
-  >
-    <vl-view
-      :zoom.sync="zoom"
-      :center.sync="center"
-      :rotation.sync="rotation"
-    />
+  <div>
+    <MapInstruments />
+    <vl-map
+      ref="map"
+      :load-tiles-while-animating="true"
+      :load-tiles-while-interacting="true"
+      data-projection="EPSG:4326"
+      :controls="false"
+      :logo="false"
+      style="height: calc(100vh - 100px)"
+      @pointermove="onMouseMove"
+    >
+      <vl-view
+        :zoom.sync="zoom"
+        :center.sync="center"
+        :rotation.sync="rotation"
+      />
 
-    <vl-layer-tile id="osm">
-      <vl-source-osm />
-    </vl-layer-tile>
-  </vl-map>
+      <vl-layer-tile id="osm">
+        <vl-source-osm />
+      </vl-layer-tile>
+    </vl-map>
+  </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { State, Mutation } from 'vuex-class'
 
+import MapInstruments from './MapInstruments.vue'
+
 import { Position } from 'geojson'
 import { MapBrowserEvent } from 'ol'
 
 const mapNamespace = 'map'
 
-@Component({})
-export default class Map extends Vue {
+@Component({
+  components: {
+    MapInstruments,
+  },
+})
+export default class MapView extends Vue {
   @State('zoom', { namespace: mapNamespace })
   private declare zoomState: number
 
@@ -83,5 +95,11 @@ export default class Map extends Vue {
 <style scoped lang="scss">
 .marker {
   cursor: pointer;
+}
+</style>
+
+<style lang="scss">
+.ol-overlaycontainer-stopevent {
+  display: none;
 }
 </style>
