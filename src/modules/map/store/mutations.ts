@@ -1,7 +1,9 @@
 import { MutationTree } from 'vuex'
 import { MapState } from './types'
+import { DrawOptions } from './../types/index'
 
 import { Position } from 'geojson'
+import { GeometryTypeNames } from '../enums'
 
 export const mutations: MutationTree<MapState> = {
   setZoom(state, zoom: number) {
@@ -15,5 +17,14 @@ export const mutations: MutationTree<MapState> = {
   },
   setMouseCoordinate(state, mouseCoordinate: Position) {
     state.mouseCoordinate = mouseCoordinate
+  },
+  setDrawOptions(state, drawOptions: DrawOptions) {
+    const newDrawOptions: DrawOptions = {
+      isActive: drawOptions.isActive ?? false,
+      type: drawOptions.type || GeometryTypeNames.POINT,
+      multiple: drawOptions.multiple ?? false,
+    }
+
+    state.drawOptions = newDrawOptions
   },
 }

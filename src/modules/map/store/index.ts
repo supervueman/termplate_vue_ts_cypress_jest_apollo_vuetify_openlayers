@@ -4,12 +4,18 @@ import { actions } from './actions'
 import { mutations } from './mutations'
 import { MapState } from './types'
 import { RootState } from '@/store/types'
+import { GeometryTypeNames } from '../enums'
 
 export const state: MapState = {
   zoom: 3,
   center: [0, 0],
   rotation: 0,
   mouseCoordinate: [0, 0],
+  drawOptions: {
+    isActive: false,
+    type: GeometryTypeNames.POINT,
+    multiple: false,
+  },
 }
 
 const namespaced = true

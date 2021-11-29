@@ -17,6 +17,8 @@
         :rotation.sync="rotation"
       />
 
+      <MapInteractionDraw />
+
       <vl-layer-tile id="osm">
         <vl-source-osm />
       </vl-layer-tile>
@@ -29,6 +31,7 @@ import { Vue, Component } from 'vue-property-decorator'
 import { State, Mutation } from 'vuex-class'
 
 import MapInstruments from './MapInstruments.vue'
+import MapInteractionDraw from './MapInteractionDraw.vue'
 
 import { Position } from 'geojson'
 import { MapBrowserEvent } from 'ol'
@@ -38,6 +41,7 @@ const mapNamespace = 'map'
 @Component({
   components: {
     MapInstruments,
+    MapInteractionDraw,
   },
 })
 export default class MapView extends Vue {
