@@ -50,6 +50,9 @@
     <v-btn fab depressed small class="mb-2">
       <v-icon>mdi-math-compass</v-icon>
     </v-btn>
+    <v-btn fab depressed small class="mb-2" @click="disableDrawOnMap">
+      <v-icon>mdi-reload</v-icon>
+    </v-btn>
   </div>
 </template>
 
@@ -76,6 +79,9 @@ export default class MapInstruments extends Vue {
 
   @Mutation('setDrawOptions', { namespace: mapNamespace })
   private declare setDrawOptions: (drawOptions: DrawOptions) => void
+
+  @Mutation('disableDrawOnMap', { namespace: mapNamespace })
+  private declare disableDrawOnMap: () => void
 
   private readonly zoomType = ZoomType
 

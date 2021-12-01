@@ -33,4 +33,12 @@ export const mutations: MutationTree<MapState> = {
   clearDrawnFeatures(state) {
     state.drawnFeatures = []
   },
+  disableDrawOnMap(state) {
+    state.drawnFeatures = []
+    state.drawOptions = {
+      isActive: false,
+      type: GeometryTypeNames.POINT,
+      multiple: false,
+    }
+  },
 }
