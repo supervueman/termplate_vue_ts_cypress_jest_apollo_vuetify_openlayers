@@ -8,14 +8,14 @@
     </v-btn>
 
     <v-speed-dial
-      v-model="fab"
+      v-model="isOpen"
       direction="left"
       transition="slide-x-reverse-transition"
       class="mb-2"
     >
       <template v-slot:activator>
-        <v-btn v-model="fab" fab depressed small>
-          <v-icon v-if="fab">mdi-close</v-icon>
+        <v-btn v-model="isOpen" fab depressed small>
+          <v-icon v-if="isOpen">mdi-close</v-icon>
           <v-icon v-else>edit</v-icon>
         </v-btn>
       </template>
@@ -79,9 +79,9 @@ export default class MapInstruments extends Vue {
 
   private readonly zoomType = ZoomType
 
-  private geometryTypeNames = GeometryTypeNames
+  private readonly geometryTypeNames = GeometryTypeNames
 
-  private fab = false
+  private isOpen = false
 
   private changeZoom(zoomType: ZoomType) {
     const zoom = zoomType === ZoomType.Plus ? this.zoom + 1 : this.zoom - 1
@@ -95,6 +95,7 @@ export default class MapInstruments extends Vue {
     this.setDrawOptions({
       isActive: true,
       type,
+      multiple: false,
     })
   }
 }

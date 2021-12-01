@@ -2,7 +2,7 @@ import { MutationTree } from 'vuex'
 import { MapState } from './types'
 import { DrawOptions } from './../types/index'
 
-import { Position } from 'geojson'
+import { Position, Feature } from 'geojson'
 import { GeometryTypeNames } from '../enums'
 
 export const mutations: MutationTree<MapState> = {
@@ -26,5 +26,11 @@ export const mutations: MutationTree<MapState> = {
     }
 
     state.drawOptions = newDrawOptions
+  },
+  setDrawnFeatures(state, features: Feature[]) {
+    state.drawnFeatures = features
+  },
+  clearDrawnFeatures(state) {
+    state.drawnFeatures = []
   },
 }

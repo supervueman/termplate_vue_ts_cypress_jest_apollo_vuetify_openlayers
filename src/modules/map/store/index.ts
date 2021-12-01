@@ -16,6 +16,7 @@ export const state: MapState = {
     type: GeometryTypeNames.POINT,
     multiple: false,
   },
+  drawnFeatures: [],
 }
 
 const namespaced = true

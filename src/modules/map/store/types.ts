@@ -1,4 +1,4 @@
-import { Position } from 'geojson'
+import { Position, Feature } from 'geojson'
 import { DrawOptions } from '../types'
 
 export interface MapState {
@@ -7,4 +7,5 @@ export interface MapState {
   rotation: number
   mouseCoordinate: Position
   drawOptions: DrawOptions
+  drawnFeatures: Feature[]
 }
