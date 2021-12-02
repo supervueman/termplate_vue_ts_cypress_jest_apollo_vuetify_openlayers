@@ -1,10 +1,10 @@
 <template>
   <div class="MapInstruments">
     <v-btn fab depressed small class="mb-2" @click="changeZoom(zoomType.Plus)">
-      <v-icon>add</v-icon>
+      <v-icon>mdi-plus</v-icon>
     </v-btn>
     <v-btn fab depressed small class="mb-2" @click="changeZoom(zoomType.Minus)">
-      <v-icon>remove</v-icon>
+      <v-icon>mdi-minus</v-icon>
     </v-btn>
 
     <v-speed-dial
@@ -16,7 +16,7 @@
       <template v-slot:activator>
         <v-btn v-model="isOpen" fab depressed small>
           <v-icon v-if="isOpen">mdi-close</v-icon>
-          <v-icon v-else>edit</v-icon>
+          <v-icon v-else>mdi-pencil</v-icon>
         </v-btn>
       </template>
       <v-btn fab depressed small @click="drawOnMap(geometryTypeNames.POINT)">
