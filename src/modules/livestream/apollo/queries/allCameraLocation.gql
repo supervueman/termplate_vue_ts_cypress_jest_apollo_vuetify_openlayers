@@ -1,0 +1,70 @@
+query allCameraLocation(
+  $filters: CameraLocationRTPFilter,
+  $ossIds: [UUIDStringC],
+  $before: String,
+  $after: String,
+  $first: Int,
+  $last: Int
+) {
+  allCameraLocation(
+    filters: $filters,
+    ossIds: $ossIds,
+    before: $before,
+    after: $after,
+    first: $first,
+    last: $last
+  ) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        uuid
+        vtcsId
+        typeCameraLocation
+        ownerId
+        codeEuz
+        ossId
+        name
+        geoLat
+        geoLon
+        id
+        broadcasts {
+          uuid
+          cameraLocationId
+          isOnline
+          isRecording
+          address
+          addressAudio
+          vods {
+            uuid
+            cameraLocationId
+            broadcastId
+            dateCreated
+            duration
+            mediaUrl
+          }
+          recordScheduler {
+            uuid
+            broadcastId
+            recordEvery
+            recordingFrom
+            recordingTo
+            isRecord
+          }
+          liveStream
+        }
+        countActive {
+          countActive
+        }
+        countTotal {
+          countTotal
+        }
+      }
+    }
+    totalCount
+  }
+}

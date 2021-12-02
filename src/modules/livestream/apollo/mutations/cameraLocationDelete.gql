@@ -1,0 +1,7 @@
+mutation CameraLocationUpdate($uuid: UUIDStringC!, $input: InputCameraLocation!){
+  CameraLocationUpdate(uuid: $uuid, input: $input) {
+    response {
+      uuid
+    }
+  }
+}

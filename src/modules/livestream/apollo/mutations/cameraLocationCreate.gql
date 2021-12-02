@@ -1,0 +1,7 @@
+mutation CameraLocationCreate($input: InputCameraLocation!){
+  CameraLocationCreate(input: $input) {
+    response {
+      uuid
+    }
+  }
+}
