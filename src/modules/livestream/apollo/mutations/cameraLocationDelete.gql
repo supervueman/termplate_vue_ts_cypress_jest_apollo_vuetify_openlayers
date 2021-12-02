@@ -1,7 +1,5 @@
-mutation CameraLocationUpdate($uuid: UUIDStringC!, $input: InputCameraLocation!){
-  CameraLocationUpdate(uuid: $uuid, input: $input) {
-    response {
-      uuid
-    }
+mutation CameraLocationDelete($uuid: UUIDStringC!){
+  CameraLocationDelete(uuid: $uuid) {
+    response
   }
 }
