@@ -1,0 +1,3 @@
+mutation CreateUser($user: User) {
+  insert_users(objects: $user)
+}

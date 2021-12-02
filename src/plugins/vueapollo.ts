@@ -6,7 +6,9 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import Vue from 'vue'
 import VueApollo from 'vue-apollo'
 import { NormalizedCacheObject } from '@apollo/client'
-import { apollo as livestream } from '@/modules/livestream'
+
+/** APOLLO CLIENTS */
+import { apolloClient as testModule } from '@/modules/testModule'
 
 Vue.use(VueApollo)
 
@@ -15,16 +17,12 @@ type VueApolloOptions<NormalizedCacheObject> = {
   clients?: { [key: string]: ApolloClient<NormalizedCacheObject> }
 }
 
-// HTTP connection to the API
 const httpLink = createHttpLink({
-  // You should use an absolute URL here
-  uri: 'http://localhost:3020/graphql',
+  uri: process.env.VUE_APP_GRAPHQL_DEFAULT_URL,
 })
 
-// Cache implementation
 const cache = new InMemoryCache()
 
-// Create the apollo client
 const apolloClient = new ApolloClient({
   link: httpLink,
   cache,
@@ -33,7 +31,7 @@ const apolloClient = new ApolloClient({
 const options = {
   defaultClient: apolloClient,
   clients: {
-    livestream: livestream.apolloClient,
+    testModule,
   },
 }
 

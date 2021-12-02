@@ -1,6 +1,6 @@
 <template>
   <v-footer color="primary" app>
-    <v-icon @click="openSettingsWindow(true)">settings</v-icon>
+    <v-icon @click="openSettingsWindow(true)">mdi-cog</v-icon>
     <v-spacer />
     <div class="mr-4">Zoom: {{ zoom }}</div>
     <div class="mr-4">Center: {{ center[0] }} {{ center[1] }}</div>

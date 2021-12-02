@@ -5,8 +5,8 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 
-import gql from '../apollo/queries/allCameraLocation.gql'
+import { allUsers } from '../apollo'
 
 @Component({})
-export default class Livestream extends Vue {}
+export default class Users extends Vue {}
 </script>
