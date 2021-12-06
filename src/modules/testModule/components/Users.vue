@@ -109,7 +109,7 @@ export default class Users extends Vue {
     }
 
     try {
-      await userDelete(this.$apollo, user?.id)
+      await userDelete(this.$apollo, user.id)
       await this.$apollo.queries.users.refetch()
     } catch (error) {
       if (error instanceof Error) {
