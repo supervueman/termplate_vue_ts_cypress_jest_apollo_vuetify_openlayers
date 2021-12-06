@@ -3,7 +3,6 @@ import { userDelete } from '../apollo'
 
 /** Типы */
 import { DollarApollo } from 'vue-apollo/types/vue-apollo'
-import { User } from '../types'
 
 /**
  * Delete user
@@ -12,7 +11,7 @@ import { User } from '../types'
  * @param data - user id
  * @return - deleted user name
  */
-export default async (apollo: DollarApollo<Vue>, data: string): Promise<User> => {
+export default async (apollo: DollarApollo<Vue>, data: string): Promise<string> => {
   if (!data) {
     throw new Error('Field id is required')
   }

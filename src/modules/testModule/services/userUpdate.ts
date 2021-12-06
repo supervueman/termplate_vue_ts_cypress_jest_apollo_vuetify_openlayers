@@ -6,11 +6,11 @@ import { DollarApollo } from 'vue-apollo/types/vue-apollo'
 import { User } from '../types'
 
 /**
- * Create user
+ * Update user
  *
  * @param apollo - http client (apollo)
  * @param data - user data
- * @return - created user
+ * @return - updated user
  */
 export default async (apollo: DollarApollo<Vue>, data: User): Promise<User> => {
   if (!data.name) {

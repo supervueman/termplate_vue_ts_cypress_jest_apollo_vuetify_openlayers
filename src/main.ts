@@ -6,9 +6,11 @@ import vuetify from './plugins/vuetify'
 import VueLayers from 'vuelayers'
 import 'vuelayers/lib/style.css'
 import apolloProvider from './plugins/vueapollo'
+import Vuelidate from 'vuelidate'
 
 Vue.config.productionTip = false
 Vue.use(VueLayers)
+Vue.use(Vuelidate)
 
 new Vue({
   router,
