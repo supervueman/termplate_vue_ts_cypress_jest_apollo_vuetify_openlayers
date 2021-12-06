@@ -24,16 +24,19 @@
     </v-card-text>
 
     <v-card-actions>
-      <v-btn color="primary" @click="save">Save</v-btn>
+      <v-btn color="primary" @click="save" :disabled="isLoading">Save</v-btn>
     </v-card-actions>
   </v-card>
 </template>
 
 <script lang="ts">
-import { Vue, Component, PropSync } from 'vue-property-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { SmartQuery } from 'vue-apollo-decorators'
 
 import { oneUser } from '../apollo'
+
+import userCreate from '../services/userCreate'
+import userUpdate from '../services/userUpdate'
 
 import { User } from '../types'
 
@@ -43,17 +46,21 @@ import { User } from '../types'
   },
 })
 export default class UserData extends Vue {
-  @PropSync('id', { type: String })
-  public readonly declare syncedId: string
+  @Prop({ type: String, default: '' })
+  public declare id: string | undefined
+
+  private isLoading = false
+
+  private createdUserId: string | undefined = ''
 
   @SmartQuery<UserData, User>({
     query: oneUser,
     skip() {
-      return !this.syncedId
+      return !this.id && !this.createdUserId
     },
     variables() {
       return {
-        id: this.syncedId,
+        id: this.id || this.createdUserId,
       }
     },
     update: ({ users }) => users[0],
@@ -66,12 +73,27 @@ export default class UserData extends Vue {
   }
 
   private get title(): string {
-    return this.syncedId ? `User: ${this.user.name}` : 'Create user'
+    return this.id || this.createdUserId ? `User: ${this.user.name}` : 'Create user'
   }
 
-  private save() {
-    // TODO: Save data
-    this.$emit('save')
+  private async save() {
+    this.isLoading = true
+
+    try {
+      if (!this.id && !this.createdUserId) {
+        const user = await userCreate(this.$apollo, this.user)
+        this.createdUserId = user.id
+      } else {
+        await userUpdate(this.$apollo, this.user)
+      }
+      this.$emit('save')
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error.message)
+      }
+    } finally {
+      this.isLoading = false
+    }
   }
 }
 </script>

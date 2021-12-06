@@ -1,4 +1,4 @@
-query allUsers($id: uuid!) {
+query OneUser($id: uuid!) {
   users(where: {
     id: {
       _eq: $id

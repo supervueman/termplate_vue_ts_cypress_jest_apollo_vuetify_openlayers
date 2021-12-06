@@ -1,6 +1,9 @@
-mutation userUpdate($where: Where, $_set: Set) {
-  update_users(where: $where, _set: $_set) {
-    affected_rows
+mutation UserUpdate($_set: users_set_input, $id: uuid) {
+  update_users(_set: $_set, where: {
+    id: {
+      _eq: $id
+    }
+  }) {
     returning {
       id
       name

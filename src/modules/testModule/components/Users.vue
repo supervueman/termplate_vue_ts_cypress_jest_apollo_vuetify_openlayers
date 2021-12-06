@@ -4,6 +4,9 @@
     <v-progress-linear indeterminate :active="$apollo.loading" />
     <v-card-text>
       <v-data-table :items="users" :headers="headers" hide-default-footer @click:row="openUser">
+        <template #top>
+          <v-btn color="primary" @click="openCreateUser">Create</v-btn>
+        </template>
         <template #item.delete>
           <v-icon>mdi-delete</v-icon>
         </template>
@@ -62,9 +65,15 @@ export default class Users extends Vue {
     },
   ]
 
-  private userId = ''
+  private userId: string | undefined = ''
 
   private isUserData = false
+
+  /** Open user date window for create */
+  private openCreateUser() {
+    this.userId = ''
+    this.isUserData = true
+  }
 
   /**
    * Open user profile window

@@ -1,3 +1,10 @@
-mutation CreateUser($user: User) {
-  insert_users(objects: $user)
+mutation UserCreate($user: [users_insert_input!]!) {
+  insert_users(objects: $user) {
+    returning {
+      id
+      name
+      rocket
+      twitter
+    }
+  }
 }
