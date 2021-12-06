@@ -8,6 +8,8 @@
         label="Name"
         dense
         outlined
+        :error-messages="nameErrors"
+        @input="$v.user.name.$touch()"
       />
       <v-text-field
         v-model="user.rocket"
@@ -32,6 +34,9 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { SmartQuery } from 'vue-apollo-decorators'
+
+import { Validations } from 'vuelidate-property-decorators'
+import { required } from 'vuelidate/lib/validators'
 
 import { oneUser } from '../apollo'
 
@@ -63,7 +68,15 @@ export default class UserData extends Vue {
         id: this.id || this.createdUserId,
       }
     },
-    update: ({ users }) => users[0],
+    update: ({ users }) => {
+      const user = users[0]
+      return {
+        id: user.id ?? '',
+        name: user.name ?? '',
+        rocket: user.rocket ?? '',
+        twitter: user.twitter ?? '',
+      }
+    },
   })
   private readonly user: User = {
     id: '',
@@ -72,11 +85,31 @@ export default class UserData extends Vue {
     twitter: '',
   }
 
+  @Validations()
+  private readonly validations = {
+    user: {
+      name: { required },
+    },
+  }
+
+  private get nameErrors() {
+    const errors: string[] = []
+    if (!this.$v.user.name?.$dirty) return errors
+    !this.$v.user.name?.required && errors.push('Name is required')
+    return errors
+  }
+
   private get title(): string {
     return this.id || this.createdUserId ? `User: ${this.user.name}` : 'Create user'
   }
 
   private async save() {
+    this.$v.$touch()
+
+    if (this.$v.$error) {
+      return
+    }
+
     this.isLoading = true
 
     try {

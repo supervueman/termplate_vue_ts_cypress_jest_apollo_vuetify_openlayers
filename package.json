@@ -53,6 +53,7 @@
     "vue-cli-plugin-apollo": "~0.22.2",
     "vue-cli-plugin-vuetify": "~2.4.3",
     "vue-template-compiler": "^2.6.11",
+    "vuelidate-property-decorators": "^1.0.28",
     "vuetify-loader": "^1.7.0"
   },
   "engines": {
