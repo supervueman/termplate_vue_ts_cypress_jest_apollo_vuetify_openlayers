@@ -10,7 +10,7 @@
     </v-card-text>
 
     <v-dialog v-model="isUserData" width="500">
-      <UserData :id="userId" />
+      <UserData :id="userId" @save="onSave" />
     </v-dialog>
   </v-card>
 </template>
@@ -65,9 +65,18 @@ export default class Users extends Vue {
 
   private isUserData = false
 
+  /**
+   * Open user profile window
+   *
+   * @param user - user data
+   */
   private openUser(user: User) {
     this.userId = user.id
     this.isUserData = true
+  }
+
+  private onSave() {
+    // TODO: refetch users
   }
 }
 </script>
