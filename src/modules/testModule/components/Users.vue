@@ -3,7 +3,7 @@
     <v-card-title>Users</v-card-title>
     <v-card-text>
       <v-data-table :items="users" :headers="headers" hide-default-footer @click:row="openUser">
-        <template #item.actions="{ _ }">
+        <template #item.delete>
           <v-icon>mdi-delete</v-icon>
         </template>
       </v-data-table>
@@ -43,10 +43,6 @@ export default class Users extends Vue {
 
   private readonly headers: DataTableHeader[] = [
     {
-      text: '',
-      value: 'actions',
-    },
-    {
       text: 'Name',
       value: 'name',
     },
@@ -57,6 +53,11 @@ export default class Users extends Vue {
     {
       text: 'Twitter',
       value: 'twitter',
+    },
+    {
+      text: '',
+      value: 'delete',
+      align: 'end',
     },
   ]
 
