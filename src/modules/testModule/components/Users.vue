@@ -1,8 +1,8 @@
 <template>
   <v-card>
     <v-card-title>Users</v-card-title>
-    <v-progress-linear indeterminate :active="$apollo.loading" />
-    <v-card-text>
+    <v-progress-linear indeterminate :active="$apollo.loading || isLoading" />
+    <v-card-text class="pt-4">
       <v-data-table :items="users" :headers="headers" hide-default-footer @click:row="openUser">
         <template #top>
           <v-btn color="primary" @click="openCreateUser">Create</v-btn>
@@ -46,6 +46,8 @@ export default class Users extends Vue {
     update: ({ users }) => users,
   })
   private readonly users: User[] = []
+
+  private isLoading = false
 
   private readonly headers: DataTableHeader[] = [
     {
@@ -108,6 +110,8 @@ export default class Users extends Vue {
       return
     }
 
+    this.isLoading = true
+
     try {
       await userDelete(this.$apollo, user.id)
       await this.$apollo.queries.users.refetch()
@@ -115,6 +119,8 @@ export default class Users extends Vue {
       if (error instanceof Error) {
         console.error(error.message)
       }
+    } finally {
+      this.isLoading = false
     }
   }
 }
