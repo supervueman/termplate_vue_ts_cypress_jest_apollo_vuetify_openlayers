@@ -7,8 +7,8 @@
         <template #top>
           <v-btn color="primary" @click="openCreateUser">Create</v-btn>
         </template>
-        <template #item.delete>
-          <v-icon>mdi-delete</v-icon>
+        <template #item.delete="{ item }">
+          <v-icon @click.stop="deleteUser(item)">mdi-delete</v-icon>
         </template>
       </v-data-table>
     </v-card-text>
@@ -26,6 +26,8 @@ import { SmartQuery } from 'vue-apollo-decorators'
 import { allUsers } from '../apollo'
 
 import UserData from './UserData.vue'
+
+import userDelete from '../services/userDelete'
 
 import { User } from '../types'
 import { DataTableHeader } from 'vuetify'
@@ -88,6 +90,26 @@ export default class Users extends Vue {
   /** Call when user data saved */
   private async onSave() {
     try {
+      await this.$apollo.queries.users.refetch()
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error.message)
+      }
+    }
+  }
+
+  /**
+   * Delete user
+   *
+   * @param user - user data
+   */
+  private async deleteUser(user: User) {
+    if (!user.id) {
+      return
+    }
+
+    try {
+      await userDelete(this.$apollo, user?.id)
       await this.$apollo.queries.users.refetch()
     } catch (error) {
       if (error instanceof Error) {
