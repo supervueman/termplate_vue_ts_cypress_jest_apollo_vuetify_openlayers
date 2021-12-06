@@ -1,4 +1,4 @@
-mutation CameraLocationDelete($uuid: UUIDStringC!){
+mutation userDelete($uuid: UUIDStringC!){
   CameraLocationDelete(uuid: $uuid) {
     response
   }

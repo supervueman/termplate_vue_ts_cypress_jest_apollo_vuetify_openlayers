@@ -1,0 +1,11 @@
+mutation userUpdate($where: Where, $_set: Set) {
+  update_users(where: $where, _set: $_set) {
+    affected_rows
+    returning {
+      id
+      name
+      rocket
+      twitter
+    }
+  }
+}

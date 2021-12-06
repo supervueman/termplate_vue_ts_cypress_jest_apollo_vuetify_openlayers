@@ -10,8 +10,12 @@
       <Settings />
     </v-dialog>
 
-    <NavigationDrawer />
+    <NavigationDrawer @openTestModule="openTestModule" />
     <BottomBar />
+
+    <v-dialog v-model="isOpenTestModule" width="1000">
+      <Users />
+    </v-dialog>
   </v-app>
 </template>
 
@@ -24,6 +28,9 @@ import NavigationDrawer from '@/components/NavigationDrawer.vue'
 import BottomBar from '@/components/BottomBar.vue'
 import AppBar from '@/components/AppBar.vue'
 
+/** TEST */
+import Users from '@/modules/testModule/components/Users.vue'
+
 const settingsNamespace = 'settings'
 
 @Component({
@@ -32,6 +39,8 @@ const settingsNamespace = 'settings'
     NavigationDrawer,
     BottomBar,
     AppBar,
+    /** TEST */
+    Users,
   },
 })
 export default class App extends Vue {
@@ -47,6 +56,14 @@ export default class App extends Vue {
 
   private set isOpenSettings(isOpenSettings: boolean) {
     this.changeIsOpenSettingsWindow(isOpenSettings)
+  }
+
+  /** TEST */
+
+  private isOpenTestModule = false
+
+  private openTestModule() {
+    this.isOpenTestModule = true
   }
 }
 </script>

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib/framework'
 import { ThemeOptions } from 'vuetify/types/services/theme'
+import ru from 'vuetify/src/locale/ru'
 
 export type VuetifyThemesT = 'dark' | 'light'
 
@@ -72,4 +73,8 @@ export default new Vuetify({
       },
     },
   } as ThemeOptions,
+  lang: {
+    locales: { ru },
+    current: 'ru',
+  },
 })

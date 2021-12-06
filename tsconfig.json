@@ -12,6 +12,7 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "noImplicitAny": false,
+    "forceConsistentCasingInFileNames": false,
     "baseUrl": ".",
     "types": [
       "webpack-env",

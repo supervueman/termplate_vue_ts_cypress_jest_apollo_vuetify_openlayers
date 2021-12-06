@@ -18,6 +18,11 @@
     <v-list-item to="/about">
       About
     </v-list-item>
+    <v-list-item>
+      <v-list-item-action @click="openTestModule">
+        Test module
+      </v-list-item-action>
+    </v-list-item>
   </v-navigation-drawer>
 </template>
 
@@ -25,5 +30,9 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component({})
-export default class NavigationDrawer extends Vue {}
+export default class NavigationDrawer extends Vue {
+  private openTestModule() {
+    this.$emit('openTestModule')
+  }
+}
 </script>

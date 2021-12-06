@@ -1,0 +1,10 @@
+query allUsers($id: uuid_comparison_exp) {
+  users(where: {
+    id: $id
+  }) {
+    id
+    name
+    rocket
+    twitter
+  }
+}
