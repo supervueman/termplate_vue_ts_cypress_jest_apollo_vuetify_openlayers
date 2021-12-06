@@ -18,6 +18,7 @@ export default async (apollo: DollarApollo<Vue>, data: User): Promise<User> => {
   }
 
   const user: User = {
+    id: data.id?.trim(),
     name: data.name.trim(),
     rocket: data.rocket.trim(),
     twitter: data.twitter.trim(),
@@ -28,9 +29,7 @@ export default async (apollo: DollarApollo<Vue>, data: User): Promise<User> => {
     mutation: userUpdate,
     variables: {
       _set: user,
-      where: {
-        id: data.id?.trim(),
-      },
+      id: data.id?.trim(),
     },
   })
 
