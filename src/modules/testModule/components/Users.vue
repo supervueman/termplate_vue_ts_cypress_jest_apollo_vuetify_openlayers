@@ -1,6 +1,7 @@
 <template>
   <v-card>
     <v-card-title>Users</v-card-title>
+    <v-progress-linear indeterminate :active="$apollo.loading" />
     <v-card-text>
       <v-data-table :items="users" :headers="headers" hide-default-footer @click:row="openUser">
         <template #item.delete>
@@ -75,8 +76,15 @@ export default class Users extends Vue {
     this.isUserData = true
   }
 
-  private onSave() {
-    // TODO: refetch users
+  /** Call when user data saved */
+  private async onSave() {
+    try {
+      await this.$apollo.queries.users.refetch()
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error.message)
+      }
+    }
   }
 }
 </script>
