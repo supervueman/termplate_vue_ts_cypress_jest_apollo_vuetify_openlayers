@@ -119,11 +119,13 @@ export default class UserData extends Vue {
       } else {
         await userUpdate(this.$apollo, this.user)
       }
+      this.$dialog.notify.success('Success!')
       this.$emit('save')
     } catch (error) {
       if (error instanceof Error) {
         console.error(error.message)
       }
+      this.$dialog.notify.error('Error!')
     } finally {
       this.isLoading = false
     }

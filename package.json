@@ -19,6 +19,7 @@
     "vuelayers": "^0.11.37",
     "vuelidate": "^0.7.6",
     "vuetify": "^2.4.0",
+    "vuetify-dialog": "^2.0.17",
     "vuex": "^3.4.0",
     "vuex-class": "^0.3.2"
   },

@@ -110,6 +110,15 @@ export default class Users extends Vue {
       return
     }
 
+    const res = await this.$dialog.confirm({
+      text: 'Do you really want to delete?',
+      title: 'Warning',
+    })
+
+    if (!res) {
+      return
+    }
+
     this.isLoading = true
 
     try {
