@@ -7,12 +7,14 @@ import { VuetifyThemeVariant } from 'vuetify/types/services/theme'
 
 export const mutations: MutationTree<ThemeManagerState> = {
   setTheme(state, theme: string) {
+    localStorage.removeItem('theme-styles')
     state.preferences.theme = theme
     vuetify.framework.theme.themes.dark = vuetify.userPreset.theme?.themes?.[theme as VuetifyThemesT] as VuetifyThemeVariant
     vuetify.framework.theme.themes.light = vuetify.userPreset.theme?.themes?.[theme as VuetifyThemesT] as VuetifyThemeVariant
   },
 
   setContrast(state, contrast: VuetifyThemesT) {
+    localStorage.removeItem('theme-styles')
     localStorage.setItem('theme', contrast)
     state.preferences.contrast = contrast
     vuetify.framework.theme.dark = contrast === VuetifyThemesNames.Dark
