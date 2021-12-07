@@ -92,7 +92,7 @@ export default class UserData extends Vue {
     },
   }
 
-  private get nameErrors() {
+  private get nameErrors(): string[] {
     const errors: string[] = []
     if (!this.$v.user.name?.$dirty) return errors
     !this.$v.user.name?.required && errors.push('Name is required')
