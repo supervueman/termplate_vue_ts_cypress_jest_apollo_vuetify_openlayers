@@ -34,5 +34,7 @@ module.exports = {
   ignorePatterns: [
     '*.gql',
     'generated.ts',
+    'codegen.js',
+    'codegen.generate.js',
   ],
 }

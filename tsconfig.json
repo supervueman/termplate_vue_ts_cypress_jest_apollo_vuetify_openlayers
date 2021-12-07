@@ -38,7 +38,8 @@
     "tests/**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "./codegen.generate.js"
   ],
   "files": [
     "src/shims-gql.d.ts"

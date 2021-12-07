@@ -8,7 +8,7 @@
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "codegen": "graphql-codegen -r dotenv/config --config codegen.yml"
+    "codegen": "graphql-codegen -r dotenv/config --config codegen.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
