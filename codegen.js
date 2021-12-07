@@ -5,6 +5,11 @@ module.exports = {
   generates: {
     ...testModule,
   },
+  namingConvention: {
+    typeNames: 'change-case-all#pascalCase',
+    enumValues: 'change-case-all#upperCase',
+    transformUnderscore: true,
+  },
   hooks: {
     afterOneFileWrite: [
       'vue-cli-service lint',
