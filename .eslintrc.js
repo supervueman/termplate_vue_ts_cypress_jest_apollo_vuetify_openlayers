@@ -33,5 +33,6 @@ module.exports = {
   ],
   ignorePatterns: [
     '*.gql',
+    'generated.ts',
   ],
 }
