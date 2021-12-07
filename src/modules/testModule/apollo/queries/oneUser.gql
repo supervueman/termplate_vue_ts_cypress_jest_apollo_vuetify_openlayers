@@ -1,12 +1,11 @@
+#import "../fragments/userFields.gql"
+
 query OneUser($id: uuid!) {
   users(where: {
     id: {
       _eq: $id
     }
   }) {
-    id
-    name
-    rocket
-    twitter
+    ...UserFields
   }
 }

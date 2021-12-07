@@ -1,3 +1,5 @@
+#import "../fragments/userFields.gql"
+
 mutation UserUpdate($_set: users_set_input, $id: uuid) {
   update_users(_set: $_set, where: {
     id: {
@@ -5,10 +7,7 @@ mutation UserUpdate($_set: users_set_input, $id: uuid) {
     }
   }) {
     returning {
-      id
-      name
-      rocket
-      twitter
+      ...UserFields
     }
   }
 }

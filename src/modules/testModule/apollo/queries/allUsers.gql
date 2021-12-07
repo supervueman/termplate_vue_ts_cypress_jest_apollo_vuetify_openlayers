@@ -1,8 +1,7 @@
+#import "../fragments/userFields.gql"
+
 query AllUsers {
   users {
-    id
-    name
-    rocket
-    twitter
+    ...UserFields
   }
 }

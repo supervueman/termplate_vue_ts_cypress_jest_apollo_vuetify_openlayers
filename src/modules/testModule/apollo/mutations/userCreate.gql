@@ -1,10 +1,9 @@
+#import "../fragments/userFields.gql"
+
 mutation UserCreate($user: [users_insert_input!]!) {
   insert_users(objects: $user) {
     returning {
-      id
-      name
-      rocket
-      twitter
+      ...UserFields
     }
   }
 }
