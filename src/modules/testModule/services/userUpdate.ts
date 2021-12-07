@@ -18,7 +18,6 @@ export default async (apollo: DollarApollo<Vue>, data: User): Promise<User> => {
   }
 
   const user: User = {
-    id: data.id?.trim(),
     name: data.name.trim(),
     rocket: data.rocket.trim(),
     twitter: data.twitter.trim(),
