@@ -10,6 +10,10 @@ import Vuelidate from 'vuelidate'
 import VuetifyDialog from 'vuetify-dialog'
 import 'vuetify-dialog/dist/vuetify-dialog.css'
 
+import { Settings } from 'luxon'
+
+Settings.defaultLocale = process.env.VUE_APP_DATE_TIME_DEFAULT_LOCAL || 'ru'
+
 Vue.config.productionTip = false
 
 Vue.use(VueLayers)

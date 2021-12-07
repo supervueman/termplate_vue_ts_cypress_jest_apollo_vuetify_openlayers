@@ -5,13 +5,16 @@
     <div class="mr-4">Zoom: {{ zoom }}</div>
     <div class="mr-4">Center: {{ center[0] }} {{ center[1] }}</div>
     <div class="mr-4">Rotation: {{ rotation }}</div>
-    <div>Mouse coordinate: {{ mouseCoordinate[0] }} {{mouseCoordinate[1]}}</div>
+    <div class="mr-4">Mouse coordinate: {{ mouseCoordinate[0] }} {{mouseCoordinate[1]}}</div>
+    <div>{{ nowDate }} {{ nowTime }}</div>
   </v-footer>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { State, Mutation } from 'vuex-class'
+
+import { DateTime } from 'luxon'
 
 import { Position } from 'geojson'
 
@@ -34,5 +37,13 @@ export default class BottomBar extends Vue {
 
   @Mutation('setIsOpenSettingsWindow', { namespace: settingsNamespace })
   private declare openSettingsWindow: (isOpenSettingsWindow: boolean) => void
+
+  private get nowDate(): string {
+    return DateTime.now().toFormat('dd LLLL yyyy')
+  }
+
+  private get nowTime(): string {
+    return DateTime.now().toFormat('HH:mm')
+  }
 }
 </script>
