@@ -19,6 +19,8 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'vue/valid-v-slot': 'off',
     'vue/no-unused-vars': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
+    '@typescript-eslint/ban-types': 'off',
   },
   overrides: [
     {

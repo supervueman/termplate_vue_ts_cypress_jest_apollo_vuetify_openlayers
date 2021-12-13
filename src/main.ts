@@ -7,10 +7,14 @@ import VueLayers from 'vuelayers'
 import 'vuelayers/lib/style.css'
 import apolloProvider from './plugins/vueapollo'
 import Vuelidate from 'vuelidate'
-import VuetifyDialog from 'vuetify-dialog'
 import 'vuetify-dialog/dist/vuetify-dialog.css'
 
 import { Settings } from 'luxon'
+import WindowManager from './plugins/windowManager'
+
+import { modals as testModals } from './modules/testModule'
+
+import DialogWrapper from '@/components/DialogWrapper.vue'
 
 Settings.defaultLocale = process.env.VUE_APP_DATE_TIME_DEFAULT_LOCAL || 'ru'
 
@@ -18,9 +22,18 @@ Vue.config.productionTip = false
 
 Vue.use(VueLayers)
 Vue.use(Vuelidate)
-Vue.use(VuetifyDialog, {
+
+Vue.use(WindowManager, {
+  container: '#app-dialog-container',
+  property: '$wm',
   context: {
     vuetify,
+  },
+  components: {
+    ...testModals,
+  },
+  layouts: {
+    dialog: DialogWrapper,
   },
 })
 
