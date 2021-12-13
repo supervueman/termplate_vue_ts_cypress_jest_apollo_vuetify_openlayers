@@ -4,12 +4,20 @@
     flat
     color="primary"
     dark
-  ></v-app-bar>
+  >
+    <v-btn @click="openTestModal">Open dialog</v-btn>
+  </v-app-bar>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component({})
-export default class AppBar extends Vue {}
+export default class AppBar extends Vue {
+  private openTestModal() {
+    this.$wm.testModal({
+      title: 'Test modal',
+    })
+  }
+}
 </script>

@@ -17,6 +17,7 @@
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^9.1.2",
     "vue-router": "^3.2.0",
+    "vuedl": "^0.3.10",
     "vuelayers": "^0.11.37",
     "vuelidate": "^0.7.6",
     "vuetify": "^2.4.0",

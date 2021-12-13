@@ -16,6 +16,8 @@
     <v-dialog v-model="isOpenTestModule" width="1000">
       <Users />
     </v-dialog>
+
+    <div id="app-dialog-container" />
   </v-app>
 </template>
 
@@ -43,7 +45,7 @@ const settingsNamespace = 'settings'
     Users,
   },
 })
-export default class App extends Vue {
+export default class BaseLayout extends Vue {
   @State('isOpenSettingsWindow', { namespace: settingsNamespace })
   private declare isOpenSettingsWindow: boolean
 
