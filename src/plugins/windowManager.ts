@@ -79,7 +79,10 @@ declare module 'vue/types/options' {
 
 const WindowManager: PluginObject<DialogPluginUseOptions> = {
   install: (Vue, options = {}) => {
-    Vue.use<VuetifyDialogUseOptions>(VuetifyDialogPlugin, options)
+    Vue.use<VuetifyDialogUseOptions>(VuetifyDialogPlugin, {
+      ...options,
+      property: '$wm',
+    })
 
     const manager: _VuetifyDialog = Vue.prototype.$wm
 

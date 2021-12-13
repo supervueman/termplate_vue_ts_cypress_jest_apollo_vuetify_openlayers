@@ -25,7 +25,6 @@ Vue.use(Vuelidate)
 
 Vue.use(WindowManager, {
   container: '#app-dialog-container',
-  property: '$wm',
   context: {
     vuetify,
   },
