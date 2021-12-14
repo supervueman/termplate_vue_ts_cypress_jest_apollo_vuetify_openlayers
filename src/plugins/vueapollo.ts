@@ -7,8 +7,7 @@ import Vue from 'vue'
 import VueApollo from 'vue-apollo'
 import { NormalizedCacheObject } from '@apollo/client'
 
-/** APOLLO CLIENTS */
-import { apolloClient as testModule } from '@/modules/testModule'
+import { apolloClients } from '@/connector'
 
 Vue.use(VueApollo)
 
@@ -31,7 +30,7 @@ const apolloClient = new ApolloClient({
 const options = {
   defaultClient: apolloClient,
   clients: {
-    testModule,
+    ...apolloClients,
   },
 }
 

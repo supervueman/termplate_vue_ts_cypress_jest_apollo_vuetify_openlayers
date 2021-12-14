@@ -12,7 +12,7 @@ import 'vuetify-dialog/dist/vuetify-dialog.css'
 import { Settings } from 'luxon'
 import WindowManager from './plugins/windowManager'
 
-import { modals as testModals } from './modules/testModule'
+import { modals } from '@/connector'
 
 import DialogWrapper from '@/components/DialogWrapper.vue'
 
@@ -29,7 +29,7 @@ Vue.use(WindowManager, {
     vuetify,
   },
   components: {
-    ...testModals,
+    ...modals,
   },
   layouts: {
     dialog: DialogWrapper,
