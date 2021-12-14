@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { store as themeManager } from '@/modules/themeManager/index.module'
-import { store as settings } from '@/modules/settings/index.module'
-
 import { RootState } from './types'
 
 import { storeModules } from '@/connector'
@@ -17,8 +14,6 @@ export default new Vuex.Store<RootState>({
   mutations: {},
   actions: {},
   modules: {
-    themeManager,
-    settings,
     ...storeModules,
   },
 })

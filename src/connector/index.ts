@@ -11,7 +11,7 @@ const connectModules = () => {
   return requireComponent.keys().map((fileName) => requireComponent(fileName))
 }
 
-const connectedModules = connectModules()
+const connectedModules = connectModules().map(module => module.default)
 
 let routes = []
 const storeModules = {}

@@ -1,8 +1,11 @@
 import store from './store'
+import { AppModule } from '@/types'
 
 const name = 'themeManager'
 
-export {
+const module: AppModule = {
   name,
   store,
 }
+
+export default module
