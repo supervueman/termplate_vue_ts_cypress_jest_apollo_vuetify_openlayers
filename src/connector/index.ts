@@ -8,27 +8,47 @@ const connectModules = () => {
     /(index.module.ts)$/,
   )
 
-  return requireComponent.keys().map((fileName) => {
-    return requireComponent(fileName)
-  })
+  return requireComponent.keys().map((fileName) => requireComponent(fileName))
 }
 
 const connectedModules = connectModules()
 
-const storeModules = {}
 let routes = []
+const storeModules = {}
+const modals = {}
+const apolloClients = {}
+
+const moduleNameError = (moduleName) => {
+  if (!moduleName) {
+    throw new Error('Module name is not setted!')
+  }
+}
 
 connectedModules.forEach(module => {
+  moduleNameError(module.name)
+
   if (module.store) {
-    storeModules[module.moduleName] = module.store
+    storeModules[module.name] = module.store
   }
 
   if (module.routes) {
     routes = routes.concat(module.routes)
   }
+
+  if (module.modals) {
+    Object.keys(module.modals).forEach(modalName => {
+      modals[modalName] = module.modals[modalName]
+    })
+  }
+
+  if (module.apolloClient) {
+    apolloClients[module.name] = module.apolloClient
+  }
 })
 
 export {
-  storeModules,
   routes,
+  storeModules,
+  modals,
+  apolloClients,
 }

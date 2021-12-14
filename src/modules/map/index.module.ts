@@ -1,8 +1,8 @@
 import store from './store'
 
-const moduleName = 'map'
+const name = 'map'
 
 export {
   store,
-  moduleName,
+  name,
 }
