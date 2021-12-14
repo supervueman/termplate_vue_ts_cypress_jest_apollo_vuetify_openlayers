@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { store as themeManager } from '@/modules/themeManager'
+import { store as themeManager } from '@/modules/themeManager/index.module'
 import { store as settings } from '@/modules/settings/index.module'
 
 import { RootState } from './types'
