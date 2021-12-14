@@ -12,7 +12,7 @@ import 'vuetify-dialog/dist/vuetify-dialog.css'
 import { Settings } from 'luxon'
 import WindowManager from './plugins/windowManager'
 
-import { modals as testModals } from './modules/testModule'
+import { modals as testModals } from './modules/playground/index.module'
 
 import DialogWrapper from '@/components/DialogWrapper.vue'
 

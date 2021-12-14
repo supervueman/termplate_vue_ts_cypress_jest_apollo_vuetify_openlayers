@@ -3,6 +3,8 @@ import VueRouter, { RouteConfig } from 'vue-router'
 
 import Home from '../views/Home.vue'
 
+import { routes as connectedRoutes } from '@/connector'
+
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
@@ -25,6 +27,7 @@ const routes: Array<RouteConfig> = [
       layout: () => import('@/layouts/AboutLayout.vue'),
     },
   },
+  ...connectedRoutes,
 ]
 
 const router = new VueRouter({

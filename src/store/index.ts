@@ -3,9 +3,10 @@ import Vuex from 'vuex'
 
 import { store as themeManager } from '@/modules/themeManager'
 import { store as settings } from '@/modules/settings'
-import { store as map } from '@/modules/map'
 
 import { RootState } from './types'
+
+import { storeModules } from '@/connector'
 
 Vue.use(Vuex)
 
@@ -18,6 +19,6 @@ export default new Vuex.Store<RootState>({
   modules: {
     themeManager,
     settings,
-    map,
+    ...storeModules,
   },
 })

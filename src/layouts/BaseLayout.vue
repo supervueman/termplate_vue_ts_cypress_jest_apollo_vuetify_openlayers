@@ -10,14 +10,10 @@
       <Settings />
     </v-dialog>
 
-    <NavigationDrawer @openTestModule="openTestModule" />
+    <NavigationDrawer />
     <BottomBar />
 
-    <v-dialog v-model="isOpenTestModule" width="1000">
-      <Users />
-    </v-dialog>
-
-    <div id="app-dialog-container" />
+    <div id="app-dialog-container" class="app-dialog-container" />
   </v-app>
 </template>
 
@@ -30,9 +26,6 @@ import NavigationDrawer from '@/components/NavigationDrawer.vue'
 import BottomBar from '@/components/BottomBar.vue'
 import AppBar from '@/components/AppBar.vue'
 
-/** TEST */
-import Users from '@/modules/testModule/components/Users.vue'
-
 const settingsNamespace = 'settings'
 
 @Component({
@@ -41,8 +34,6 @@ const settingsNamespace = 'settings'
     NavigationDrawer,
     BottomBar,
     AppBar,
-    /** TEST */
-    Users,
   },
 })
 export default class BaseLayout extends Vue {
@@ -59,13 +50,11 @@ export default class BaseLayout extends Vue {
   private set isOpenSettings(isOpenSettings: boolean) {
     this.changeIsOpenSettingsWindow(isOpenSettings)
   }
-
-  /** TEST */
-
-  private isOpenTestModule = false
-
-  private openTestModule() {
-    this.isOpenTestModule = true
-  }
 }
 </script>
+
+<style scoped lang="scss">
+.app-dialog-container {
+  z-index: 9999;
+}
+</style>

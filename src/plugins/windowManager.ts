@@ -56,6 +56,31 @@ export type VueComponents<T extends {}> = {
   [name in keyof T]: typeof Vue
 }
 
+export type Size = {
+  offsetWidth: number
+  offsetHeight: number
+  nWidth: number
+  nHeight: number
+  width: number
+  height: number
+  maxWidth: number
+  maxHeight: number
+  offsetLeft: number
+  offsetTop: number
+  left: number | null
+  top: number | null
+}
+
+// Эти поля будут необходимы, если родителем перемещаемого объекта является какой-либо кастомный div
+export interface SizeExtended extends Size {
+  parentWidth?: number
+  parentHeight?: number
+  parentLeft?: number
+  parentTop?: number
+  parentMinLeft?: number
+  parentMinTop?: number
+}
+
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     layout?: [
@@ -74,6 +99,67 @@ declare module 'vue/types/options' {
         unique?: boolean
       },
     ]
+  }
+}
+
+/** Обработчик перемещения DOM-элемента. Данная ф-я мутирует value
+ *
+ * @param event - объект события mousedown
+ * @param element - элемент DOM, который необходимо передвигать
+ * @param value - объект передвигаемого элемента, где содержатся его координаты, размеры и т.д.
+ * @param selector - селектор выборки
+ */
+export const move = (event: MouseEvent, element: Element, value: SizeExtended, selector = '#AppWorkspace .v-main__wrap') => {
+  const { left, top, height, width } = element.getBoundingClientRect()
+  /* Сохранить позицию объекта на момент начала перемещения окна */
+  value.offsetLeft = event.clientX - left
+  value.offsetTop = event.clientY - top
+
+  const topOffset = getHeightHeader(selector) ?? 0
+  const minLeft = value.parentMinLeft ?? 0
+  const minTop = value.parentMinTop ?? 0
+  /* Область перемещения всё окно, при необходимости можно передевать */
+  const parentWidth = value.parentWidth || window.innerWidth
+  const parentHeight = value.parentHeight || window.innerHeight
+  const maxLeft = parentWidth - width
+  const maxTop = parentHeight - height
+  /* Обработчик события отслеживания положения курсора */
+  window.onmousemove = (e) => {
+    if (value.offsetTop && value.offsetLeft) {
+      let left = e.clientX - value.offsetLeft - (value.parentLeft ?? 0)
+      let top = e.clientY - value.offsetTop - (value.parentTop !== undefined ? value.parentTop : topOffset)
+      left = left < minLeft ? minLeft : left
+      left = left > maxLeft ? maxLeft : left
+      top = top < minTop ? minTop : top
+      top = top > maxTop ? maxTop : top
+
+      value.left = left
+      value.top = top
+    }
+  }
+
+  /* Обработчик события снятие зажатия ЛКМ с кнопки перемещения модального окна */
+  window.onmouseup = () => {
+    value.offsetLeft = 0
+    value.offsetTop = 0
+
+    window.onmousemove = null
+    window.onmousedown = null
+    window.onmouseup = null
+  }
+}
+
+/**
+ * Получаем высоту шапки за которую нельзя заезжать передвигаемым окном
+ * @param selector - селектор
+ * @return - высота шапки
+ * */
+const getHeightHeader = (selector: string): number | undefined => {
+  const elem = document.querySelector(selector)
+  if (!elem) {
+    console.error(`${selector} больше не существует.`)
+  } else {
+    return elem?.getBoundingClientRect().top || 0
   }
 }
 

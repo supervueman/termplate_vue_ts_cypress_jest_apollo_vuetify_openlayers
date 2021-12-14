@@ -1,9 +1,9 @@
-const testModule = require('./src/modules/testModule/codegen.generate')
+const playground = require('./src/modules/playground/codegen.generate')
 
 module.exports = {
   overwrite: true,
   generates: {
-    ...testModule,
+    ...playground,
   },
   namingConvention: {
     typeNames: 'change-case-all#pascalCase',
