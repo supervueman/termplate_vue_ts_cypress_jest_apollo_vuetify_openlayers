@@ -15,8 +15,8 @@
 
     <v-divider />
 
-    <v-list-item to="/about">
-      About
+    <v-list-item to="/playground">
+      Playground
     </v-list-item>
   </v-navigation-drawer>
 </template>
