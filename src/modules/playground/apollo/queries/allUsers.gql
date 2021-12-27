@@ -1,0 +1,7 @@
+#import "../fragments/userFields.gql"
+
+query AllUsers {
+  users {
+    ...UserFields
+  }
+}

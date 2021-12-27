@@ -1,0 +1,11 @@
+mutation UserDelete($id: uuid){
+  delete_users(where: {
+    id: {
+      _eq: $id
+    }
+  }){
+    returning {
+      name
+    }
+  }
+}

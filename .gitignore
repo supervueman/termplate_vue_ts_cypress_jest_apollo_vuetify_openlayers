@@ -27,5 +27,3 @@ pnpm-debug.log*
 *.sw?
 
 apollo.config.js
-
-/src/modules/playground
